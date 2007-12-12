@@ -13,8 +13,8 @@ Release:	%{release}
 Epoch:		%{epoch}
 License:	GPL
 Group:		Graphics
-PreReq:		/sbin/ldconfig
-PreReq:		/sbin/install-info
+PreReq:		ldconfig
+PreReq:		info-install
 BuildRequires:	XFree86
 BuildRequires:	XFree86-static-libs
 BuildRequires:	bison
