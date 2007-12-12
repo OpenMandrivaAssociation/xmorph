@@ -1,5 +1,5 @@
 %define name		xmorph
-%define release 4mdk
+%define release %mkrel 4
 %define version 20030527
 %define epoch		2
 %define lib_major	0
