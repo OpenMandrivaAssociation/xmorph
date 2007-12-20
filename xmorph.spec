@@ -72,15 +72,15 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall
 
 #mdk menu 
-install -m 755 -d $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT/%{_menudir}/xmorph
-?package(xmorph):\
-	needs="X11"\
-	section="Multimedia/Graphics"\
-	title="Xmorph"\
-	longtitle="Morphing software"\
-	command="xmorph"\
-	icon="xmorph.png"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-xmorph.desktop
+[Desktop Entry]
+Type=Application
+Categories=Graphics;Viewer;
+Name=Xmorph
+Comment=Morphing software
+Exec=xmorph
+Icon=xmorph
 EOF
 
 #mdk icons
@@ -111,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc ABOUT-NLS AUTHORS README HISTORY NEWS
 %{_bindir}/*
 %{_mandir}/*/*
-%{_menudir}/*
+%{_datadir}/applications/mandriva-*.desktop
 %{_infodir}/*
 %{_miconsdir}/*.png
 %{_iconsdir}/*.png
