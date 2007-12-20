@@ -15,7 +15,7 @@ License:	GPL
 Group:		Graphics
 Requires(post,preun):		ldconfig, info-install
 BuildRequires:	XFree86
-BuildRequires:	XFree86-static-libs
+#BuildRequires:	XFree86-static-libs
 BuildRequires:	bison
 BuildRequires:	gettext-devel
 BuildRequires:	gdk-pixbuf-devel
