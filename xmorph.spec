@@ -21,6 +21,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	imlib-devel
 BuildRequires:	texinfo
+# for X11/bitmaps/gray:
+BuildRequires:	x11-data-bitmaps
 URL:		http://sourceforge.net/projects/xmorph/
 Source0:	xmorph_%{version}.tar.bz2
 Source2:	xmorph-icons.tar.bz2
