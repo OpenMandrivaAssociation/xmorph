@@ -28,6 +28,7 @@ Source0:	xmorph_%{version}.tar.bz2
 Source2:	xmorph-icons.tar.bz2
 # (fc) 20010220-5mdk fix compilation with GNOME1 platform
 #Patch0:		xmorph-20010220-gnome1.patch.bz2
+BuildRoot:	%_tmppath/%name-%version-%release-buildroot
 
 %package -n %{lib_name}
 Summary:	Internal library required for xmorph/gtkmorph
