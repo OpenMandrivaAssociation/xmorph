@@ -93,13 +93,17 @@ tar xjvf %{SOURCE2} -C $RPM_BUILD_ROOT%{_iconsdir}
 
 %post
 %_install_info %{name}.info
+%if %mdkversion < 200900
 %update_menus
+%endif
 
 %preun
 %_remove_install_info %{name}.info
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
+%endif
 
 %if %mdkversion < 200900
 %post -n %{lib_name} -p /sbin/ldconfig
