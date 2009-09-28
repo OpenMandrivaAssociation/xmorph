@@ -1,6 +1,6 @@
 %define name		xmorph
-%define release %mkrel 9
-%define version 20030527
+%define release %mkrel 1
+%define version 20060817
 %define epoch		2
 %define lib_major	0
 %define lib_name_orig	%mklibname morph
@@ -13,21 +13,18 @@ Release:	%{release}
 Epoch:		%{epoch}
 License:	GPL
 Group:		Graphics
-Requires(post,preun):		ldconfig, info-install
-BuildRequires:	X11-devel xaw-devel
-#BuildRequires:	XFree86-static-libs
+BuildRequires:	xaw-devel
 BuildRequires:	bison
 BuildRequires:	gettext-devel
-BuildRequires:	gdk-pixbuf-devel
-BuildRequires:	imlib-devel
+BuildRequires:	gtk+2-devel
 BuildRequires:	texinfo
 # for X11/bitmaps/gray:
 BuildRequires:	x11-data-bitmaps
 URL:		http://sourceforge.net/projects/xmorph/
-Source0:	xmorph_%{version}.tar.bz2
+Source0:	xmorph_%{version}.tar.gz
 Source2:	xmorph-icons.tar.bz2
-# (fc) 20010220-5mdk fix compilation with GNOME1 platform
-#Patch0:		xmorph-20010220-gnome1.patch.bz2
+# (fc) 20060817-1mdv fix build with latest gcc
+Patch0:		xmorph-20060817-fixbuild.patch
 BuildRoot:	%_tmppath/%name-%version-%release-buildroot
 
 %package -n %{lib_name}
@@ -58,19 +55,16 @@ Development headers and static libs for xmorph and gtkmorph.
 
 %prep
 %setup -q
-#%patch0 -p1 -b .gnome1
+%patch0 -p1 -b .fixbuild
+
 
 %build
-%configure --without-morph
-%ifarch alpha
-# Donno why. -- Geoff
-mv po/Makefile.in po/Makefile 
-%endif
+%configure2_5x --without-morph --with-gtk=2
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
+%makeinstall_std
 
 #mdk menu 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
@@ -80,7 +74,7 @@ Type=Application
 Categories=Graphics;Viewer;
 Name=Xmorph
 Comment=Morphing software
-Exec=xmorph
+Exec=gtkmorph
 Icon=xmorph
 EOF
 
@@ -126,9 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*.png
 %{_liconsdir}/*.png
 %_libdir/*.la
-%dir %{_datadir}/xmorph
-%{_datadir}/xmorph/*
-%{_datadir}/xmorph/*/*
+%{_datadir}/xmorph
 
 %files -n %{lib_name}
 %defattr(-,root,root)
