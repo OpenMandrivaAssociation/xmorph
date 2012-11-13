@@ -1,0 +1,35 @@
+From c2d80911778aece22e18ffc1ee591cdb37713ae8 Mon Sep 17 00:00:00 2001
+From: Frederic Crozat <fcrozat@mandriva.com>
+Date: Mon, 28 Sep 2009 13:51:30 +0200
+Subject: [PATCH] fix build
+
+---
+ gtkmorph/testfourier.cc |    5 +++--
+ 1 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/gtkmorph/testfourier.cc b/gtkmorph/testfourier.cc
+index fafb41c..57b14cf 100644
+--- a/gtkmorph/testfourier.cc
++++ b/gtkmorph/testfourier.cc
+@@ -9,7 +9,8 @@
+ #include "fourier.hh"
+ #include "fourier.cc"
+ 
+-#include "stdio.h"
++#include <stdio.h>
++#include <string.h>
+ 
+ void help()
+ { printf("Usage: testfourier -s|-c si sx sy di dx di [oi]\n\
+@@ -149,7 +150,7 @@ int main(int argc,char* argv[])
+       result = gdk_pixbuf_save(dst,argv[7],"png",&error,NULL);
+       g_assert ((result  && !error ) || (!result && error ));
+       if(error)
+-	{g_warning((error)->message);g_error_free (error);}   
++	{g_warning("%s", (error)->message);g_error_free (error);}   
+   }
+   return 0;
+ 		     
+-- 
+1.6.4.4
+
