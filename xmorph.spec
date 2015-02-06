@@ -5,7 +5,7 @@
 Summary:	An X Window System tool for creating morphed images
 Name:		xmorph
 Version:	20060817
-Release:	2
+Release:	3
 Epoch:		2
 License:	GPL
 Group:		Graphics
