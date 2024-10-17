@@ -16,7 +16,7 @@ BuildRequires:	gtk+2-devel
 BuildRequires:	texinfo
 # for X11/bitmaps/gray:
 BuildRequires:	x11-data-bitmaps
-URL:		http://sourceforge.net/projects/xmorph/
+URL:		https://sourceforge.net/projects/xmorph/
 Source0:	xmorph_%{version}.tar.gz
 Source2:	xmorph-icons.tar.bz2
 # (fc) 20060817-1mdv fix build with latest gcc
