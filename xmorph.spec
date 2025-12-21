@@ -9,6 +9,11 @@ Release:	3
 Epoch:		2
 License:	GPL
 Group:		Graphics
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	xaw-devel
 BuildRequires:	bison
 BuildRequires:	gettext-devel
